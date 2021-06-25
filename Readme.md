@@ -55,3 +55,9 @@ or manually npm
 4. Enter `npm run dev`
 5. Open http://localhost:3000 by browser
 
+## Screenshots
+Main screen. 
+![](/screenshots/2021-06-25-14-57-54.png)
+
+When the user selects a report and clicks print, the JSPrintManager dialog will appear.
+![](/screenshots/2021-06-25-14-59-11.png)
