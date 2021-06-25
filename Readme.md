@@ -5,12 +5,12 @@ This sample demonstrates the use of GrapeCity ActiveReports WynPrinting connecte
 ## System requirements - Server Side
  * [Node.js](https://nodejs.org/en/download/) 14.17.0 or newer
  * JSPrintManager Client App Version 3 (jspm-3.0.21.425-win64.exe)
-   * This can be found within the zip
+   * This executable can be found within the zip
    * This sample is compatible and tested with this JSPM  
   
 ## System Requirements - Client Side
 * JSPrintManager Client App Version 3 (jspm-3.0.21.425-win64.exe)
-   * This can be found within the zip
+   * This executable can be found within the zip
    * This sample is compatible and tested with this JSPM  
 ### Installing JSPrintManager Client App
 
@@ -35,6 +35,8 @@ https://www.neodynamic.com/Products/Help/JSPrintManager2.0/apiref/modules/jspm.h
     const username = 'admin';
     const password ='admin';
     ```
+* In the **webpack.config.js**, you can change the host, http://localhost:3000, to fit your environment
+
 ### Steps
 1. Execute `run-yarn.cmd` ( or `run-npm.cmd` )
 2. Open http://localhost:3000 by browser
