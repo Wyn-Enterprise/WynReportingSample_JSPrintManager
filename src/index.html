@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>gces-reporting-printing</title>
+		<link rel="shortcut icon" href='favicon.ico' />
+		<style>
+			:root {
+				--color-accent: #1e90ff;
+				--color-accent-hover: #0d77e0;
+				--color-accent-focus: #7f8a96;
+				--color-text-input: #424242;
+				--color-text-placeholder: #9b9b9b;
+				--color-text-main: #ffffff;
+				--color-text-error: #f44336;
+				--color-app-body-bg: #363636;
+				--color-app-header-bg: #555555;
+				--color-app-border: #6c6c6c;
+				--color-app-btn: #686868;
+				--color-app-btn-hover: #5f5f5f;
+				--color-app-item-bg-hover: #444444;
+				--color-app-item-bg-active: #555555;
+				--color-app-scroll-bg: #414141;
+				--color-app-text: #fff;
+				--color-app-text-btn: #fff;
+				--color-instructions-bg: #fff;
+				--color-blank-area-bg: #e9e9e9;
+				--color-shadow: #d6d6d6;
+				--width-app: 320px;
+				--fs-controls: 16px;
+				--fs-app: 12px;
+			}
+
+			html, body {
+				overflow: hidden;
+
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+
+				font-family: "open sans", "segoe ui", helvetica, arial, sans-serif;
+			}
+
+
+			.root {
+				width: 100%;
+				height: 100%;
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			.app {
+				width: 100%;
+				height: 80%;
+
+				display: flex;
+				flex-direction: column;
+
+				width: var(--width-app);
+
+				color: var(--color-app-text);
+				background-color: var(--color-app-body-bg);
+
+				font-size: var(--fs-app);
+			}
+
+			.app-header {
+				width: 100%;
+
+				background-color: var(--color-app-header-bg);
+			}
+
+			.app-header-group {
+				padding: 10px;
+
+				border-bottom: 1px solid var(--color-app-border);
+			}
+
+			.app-portal-url > a {
+				color: var(--color-app-text);
+			}
+
+			.app-user-info {
+				display: flex;
+
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.app-btn {
+				padding: 7px;
+
+				cursor: pointer;
+
+				color: var(--color-app-text-btn);
+				border: none;
+				border-radius: 2px;
+				outline: none;
+				background-color: var(--color-app-btn);
+
+				font-size: var(--fs-sidebar);
+			}
+
+			.app-btn:hover {
+				background-color: var(--color-app-btn-hover);
+			}
+
+			.app-btn:disabled,
+			.app-btn[disabled] {
+				cursor: default;
+				background-color: var(--color-app-btn-hover);
+			}
+
+			.wyn-report-list {
+				overflow-y: auto;
+
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+
+			.wyn-report-list-item {
+				padding: 10px;
+
+				cursor: pointer;
+
+				border-radius: 2px;
+			}
+
+			.wyn-report-list-item:hover {
+				background-color: var(--color-app-item-bg-hover);
+			}
+
+			.wyn-report-list-item.active {
+				background-color: var(--color-app-item-bg-active);
+			}
+
+			.wyn-report-list-item> span {
+				display: block;
+				overflow: hidden;
+
+				white-space: nowrap;
+				text-overflow: ellipsis;
+			}
+
+			.wyn-report-list {
+				scrollbar-width: thin;
+				scrollbar-color: var(--color-app-scroll-bg) var(--color-app-btn);
+			}
+
+			.wyn-report-list::-webkit-scrollbar {
+				width: 12px;
+			}
+
+			.wyn-report-list::-webkit-scrollbar-track {
+				background: var(--color-app-scroll-bg);
+			}
+
+			.wyn-report-list::-webkit-scrollbar-thumb {
+				border: var(--color-app-scroll-bg);
+				background-color: var(--color-app-btn);
+			}
+
+
+			.loader {
+				position: fixed;
+				font-size: 1px;
+				text-indent: -9999em;
+				width: 11em;
+				height: 11em;
+				border-radius: 50%;
+				background: #ffffff;
+				background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+				background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+				background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+				background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+				background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+				-webkit-animation: load3 1.4s infinite linear;
+				animation: load3 1.4s infinite linear;
+				-webkit-transform: translateZ(0);
+				-ms-transform: translateZ(0);
+				transform: translateZ(0);
+			}
+			.loader:before {
+				width: 50%;
+				height: 50%;
+				background: #ffffff;
+				border-radius: 100% 0 0 0;
+				position: absolute;
+				top: 0;
+				left: 0;
+				content: '';
+			}
+			.loader:after {
+				background: var(--color-app-header-bg);
+				width: 75%;
+				height: 75%;
+				border-radius: 50%;
+				content: '';
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			@-webkit-keyframes load3 {
+				0% {
+					-webkit-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+				100% {
+					-webkit-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+				}
+				@keyframes load3 {
+				0% {
+					-webkit-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+				100% {
+					-webkit-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
+
+		</style>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "gces-reporting-printing-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "GrapeCity",
+  "license": "Commercial",
+  "scripts": {
+    "dev": "webpack-dev-server --progress"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@zip.js/zip.js": "2.2.33",
+    "html-webpack-plugin": "5.3.1",
+    "jsprintmanager": "3.0.7",
+    "webpack": "5.37.0",
+    "webpack-cli": "4.7.0",
+    "webpack-dev-server": "4.0.0-beta.3"
+  }
+}
