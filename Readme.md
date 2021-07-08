@@ -1,6 +1,6 @@
 # Wyn Reporting Printing Sample
 
-This sample demonstrates the use of GrapeCity ActiveReports WynPrinting connected to the Wyn portal.
+This sample demonstrates the use of GrapeCity WynPrinting connected to the Wyn portal.
 
 ## System requirements - Server Side
  * [Node.js](https://nodejs.org/en/download/) 14.17.0 or newer
